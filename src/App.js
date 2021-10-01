@@ -133,7 +133,7 @@ function App() {
   async function mint(mintCount) {
     if (contract) {
       if (chainId === 1) {
-        const presaleOpen = await contract.methods.presaleOpen().call();
+        // const presaleOpen = await contract.methods.presaleOpen().call();
         const saleOpen = await contract.methods.saleOpen().call();
         if (saleOpen) {
           // const eligibility = await contract.methods
@@ -146,12 +146,7 @@ function App() {
             setLessMintAmountAlert(true);
           } else {
             setConfirmTransaction(true);
-            const eligibility = await contract.methods
-              .checkPresaleEligiblity(account)
-              .call();
-            // console.log(eligibility);
-            const presaleOpen = await contract.methods.presaleOpen().call();
-            // console.log(presaleOpen);
+
             const finalPrice = Number(price) * mintCount;
             contract.methods
               .mintNFT(mintCount)
